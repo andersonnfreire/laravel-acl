@@ -5,7 +5,7 @@ namespace App\Policies;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Post;
 use App\User;
-use App\Policies\Response;
+
 class PostPolicy
 {
     use HandlesAuthorization;

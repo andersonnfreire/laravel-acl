@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Model\Permission;
+use App\Model\Role;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -26,4 +27,30 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+
+    public function hasPermission(Permission $permission)
+    {
+        // view_post => Manager, Adm
+        return $this->hasAnyRoles($permission->roles);
+    }
+    public function hasAnyRoles($roles) {
+        // Carlos => Editor ..
+        if (is_array($roles) || is_object($roles))
+        {
+            foreach ($roles as $role)
+            {
+                 var_dump($role->name);
+                 return $this->roles->contains('name',$role->name);
+            }
+        }
+        
+        // Carlos => Manager
+        return $this->roles->contains('name',$roles);
+    }
 }

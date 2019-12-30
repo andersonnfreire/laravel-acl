@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
-use Gate;
 
 class HomeController extends Controller {
 
@@ -35,9 +33,9 @@ class HomeController extends Controller {
     public function update($idPost) {
         $post = Post::find($idPost);
 
-        //$this->authorize('update-post',$post);
-
-        $response = Gate::denies('update', $post);
+        //$response = $this->authorize('view_post',$post);
+        //dd($response);
+        $response = Gate::denies('view_post', $post);
 
         if (!$response) {
             return view('post-update', compact('post'));
