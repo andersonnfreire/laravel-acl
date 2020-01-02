@@ -9,7 +9,7 @@
             <b>Author: {{$post->user->name}}</b>
             <a href="{{ url("/post/{$post->id}/update")}}">Editar</a>
             <hr>
-     @endcan        
+    @endcan        
     @empty
         <p>Nenhum Post Cadastrado</p>
     @endforelse
