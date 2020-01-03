@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Gate;
 
 class HomeController extends Controller {
 
@@ -33,19 +34,22 @@ class HomeController extends Controller {
     public function update($idPost) {
         $post = Post::find($idPost);
 
-        $response = $this->authorize('view_post',$post);
+        //$response = $this->authorize('view_post',$post);
         //dd($response);
         //$response = Gate::denies('view_post', $post);
 
-        if (!$response) {
-            return view('post-update', compact('post'));
-        } else {
+        if(Gate::denies('edit_post',$post))
+        {
             abort(403,'Unauthorized');
+        }
+        else
+        {
+            return view('post-update', compact('post'));
         }
     }
     public function rolesPermissions() {
         $nomeUser = auth()->user()->name;
-        var_dump("<h1>{$nomeUser}</h1>");
+        echo "<h1>{$nomeUser}</h1>";
         
         foreach (auth()->user()->roles as $role) {
             echo "{$role->name} -> ";

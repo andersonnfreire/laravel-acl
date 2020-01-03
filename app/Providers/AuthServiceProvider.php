@@ -39,5 +39,14 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->hasPermission($permission);
             });
         }
+        
+        Gate::before(function(User $user)
+        {
+            if ($user->hasAnyRoles('adm'))
+            {
+                return true;
+            }
+        });
+        
     }
 }
