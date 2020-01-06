@@ -1,12 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Post;
-use Gate;
-
-class HomeController extends Controller {
-
+class SiteController extends Controller {
     /**
      * Create a new controller instance.
      *
@@ -15,36 +10,27 @@ class HomeController extends Controller {
     public function __construct() {
         $this->middleware('auth');
     }
-
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Post $post) {
-
-        //$posts = $post->where('user_id', auth()->user()->id)->get();
-
-
-
-        $posts = $post->all();
-        return view('home', compact('posts'));
+    public function index() {
+        return view('portal.home.index');
     }
-
-    public function update($idPost) {
+    
+    
+    
+    
+    /*public function update($idPost) {
         $post = Post::find($idPost);
-
         //$response = $this->authorize('view_post',$post);
         //dd($response);
         //$response = Gate::denies('view_post', $post);
-
-        if(Gate::denies('edit_post',$post))
-        {
-            abort(403,'Unauthorized');
-        }
-        else
-        {
+        if (Gate::denies('edit_post', $post)) {
             return view('post-update', compact('post'));
+        } else {
+            abort(403,'Unauthorized');
         }
     }
     public function rolesPermissions() {
@@ -58,10 +44,10 @@ class HomeController extends Controller {
             foreach ($permissions as $permission) {
                 echo "{$permission->name} , ";
             }
+            echo '<hr>';
             
         }
         
         
-    }
-
+    }*/
 }
