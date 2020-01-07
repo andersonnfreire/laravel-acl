@@ -2,7 +2,6 @@
 
 @section('content')
 
-<div class="clear"></div>
 
 <!--Filters and actions-->
 <div class="actions">
@@ -23,19 +22,19 @@
         List Roles
     </h1>
 
-    <table class="table table-hover">
+    <table class="table table-bordered">
         <tr>
             <th>Name</th>
             <th>Label</th>
-            <th width="150px">Ações</th>
+            <th width="200px">Ações</th>
         </tr>
         @forelse( $roles as $role)
         <tr>
             <td>{{$role->name}}</td>
             <td>{{$role->label}}</td>
             <td>
-                <a href="{{url("/painel/role/$role->id/permissions")}}" class="edit">
-                    <i class="fa fa-pencil-square-o"></i>
+                <a href="{{url("/painel/role/$role->id/permissions")}}" class="permission">
+                    <i class="fas fa-lock-open"></i>
                 </a>
                 <a href="{{url("/painel/role/$role->id/edit")}}" class="edit">
                     <i class="fa fa-pencil-square-o"></i>

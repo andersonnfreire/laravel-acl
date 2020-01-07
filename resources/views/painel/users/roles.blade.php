@@ -20,7 +20,7 @@
 
 <div class="container">
     <h1 class="title">
-        List Permissions
+        Roles <-> Users : <b>{{$users->name}}</b>
     </h1>
 
     <table class="table table-hover">
@@ -29,20 +29,15 @@
             <th>Label</th>
             <th width="150px">Ações</th>
         </tr>
-        @forelse( $permissions as $permission)
+        @forelse( $roles as $role)
         <tr>
-            <td>{{$permission->name}}</td>
-            <td>{{$permission->label}}</td>
+            <td>{{$role->name}}</td>
+            <td>{{$role->label}}</td>
             <td>
-                <a href="{{url("/painel/permissions/$permission->id/roles")}}" class="permission">
-                    <i class="fas fa-lock-open"></i>
-                </a>
-                <a href="{{url("/painel/permissions/$permission->id/edit")}}" class="edit">
+                <a href="{{url("/painel/role/$role->id/delete")}}" class="edit">
                     <i class="fa fa-pencil-square-o"></i>
                 </a>
-                <a href="{{url("/painel/permissions/$permission->id/delete")}}" class="delete">
-                    <i class="fa fa-trash"></i>
-                </a>
+               
             </td>
         </tr>
         @empty

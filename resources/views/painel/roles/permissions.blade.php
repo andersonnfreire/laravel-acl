@@ -20,7 +20,7 @@
 
 <div class="container">
     <h1 class="title">
-        Permissions <b>{{$role->name}}</b>
+        Permissions <b>{{$roles->name}}</b>
     </h1>
 
     <table class="table table-hover">
@@ -34,7 +34,7 @@
             <td>{{$permission->name}}</td>
             <td>{{$permission->label}}</td>
             <td>
-                <a href="{{url("/painel/permission/$permission->id/permissions")}}" class="edit">
+                <a href="{{url("/painel/permissions/$permission->id/permissions")}}" class="edit">
                     <i class="fa fa-pencil-square-o"></i>
                 </a>
                

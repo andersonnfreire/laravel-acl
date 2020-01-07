@@ -16,4 +16,16 @@ class PermissionController extends Controller
         $permissions = $this->permission->all();
         return view('painel.permissions.index',compact('permissions'));
     }
+     public function roles($id)
+    {
+        //recupera o permission
+        $permissions = $this->permission->find($id);
+        
+        //recuperando permissões
+        
+        $roles = $permissions->roles;
+        
+        return view('painel.permissions.roles',compact('roles','permissions'));
+        
+    }
 }

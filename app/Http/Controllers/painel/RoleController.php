@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Painel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Role;
+use App\Model\Permission;
 class RoleController extends Controller
 {
     private $role;
@@ -19,13 +20,13 @@ class RoleController extends Controller
     public function permissions($id)
     {
         //recupera o role
-        $role = $this->role->find($id);
+        $roles = $this->role->find($id);
         
         //recuperando permissões
         
-        $permissions = $role->permissions;
+        $permissions = $roles->permissions;
         
-        return view('painel.roles.permissions',compact('role','permissions'));
+        return view('painel.roles.permissions',compact('roles','permissions'));
         
     }
 }
