@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Painel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Gate;
 use App\Model\Post;
 class PostController extends Controller
 {
@@ -20,6 +20,10 @@ class PostController extends Controller
     public function index()
     {
         $posts = $this->post->all();
+        if(Gate::denies('view_post')){
+            return redirect()->back();
+            //tabort(403,'Not Permissions Lists Post');
+        }
         return view('painel.posts.index', compact('posts'));
     }
 }

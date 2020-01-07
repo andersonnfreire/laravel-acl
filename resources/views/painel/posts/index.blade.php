@@ -22,7 +22,7 @@
     <h1 class="title">
         Listagem dos Posts
     </h1>
-
+    
     <table class="table table-hover">
         <tr>
             <th>Title</th>

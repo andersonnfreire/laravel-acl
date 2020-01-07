@@ -14,15 +14,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 	<!--CSS-->
-	<link rel="stylesheet" href="{{url("assets/painel/css/acl-painel.css")}}">
+	<link rel="stylesheet" href="{{URL::asset('assets/all/acl-painel.css')}}" rel="stylesheet" type="text/css">
 
 	<!--Favicon-->
-	<link rel="icon" type="image/png" href="{{url("assets/painel/imgs/favicon-acl.png")}}">
+	<link rel="icon" type="image/png" href="{{url('assets/painel/imgs/favicon-acl.png')}}">
 </head>
 <body>
 	<div class="login">
 		<div class="login-header">
-			<img src="{{url("assets/painel/imgs/acl-branca.png")}}" alt="acl" class="logo-login">
+			<img src="{{url('assets/painel/imgs/acl-branca.png')}}" alt="acl" class="logo-login">
 		</div>
             
                 @yield('content-form')

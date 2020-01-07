@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Role;
 use App\Model\Permission;
+use Gate;
 class RoleController extends Controller
 {
     private $role;
@@ -15,6 +16,10 @@ class RoleController extends Controller
     public function index()
     {
         $roles = $this->role->all();
+        if(Gate::denies('adm')){
+            return redirect()->back();
+            //tabort(403,'Not Permissions Lists Post');
+        }
         return view('painel.roles.index',compact('roles'));
     }
     public function permissions($id)

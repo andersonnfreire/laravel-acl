@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css')}}" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
         <!--Fonts-->
-<!--        <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')}}">-->
+        <!--        <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')}}">-->
         <script src="{{URL::asset('https://kit.fontawesome.com/4560af3fc1.js')}}" crossorigin="anonymous"></script>
         <!--CSS-->
         <!--<link href="{{URL::asset('assets/painel/css/acl-painel.css')}}" rel="stylesheet" type="text/css">-->
@@ -29,32 +29,61 @@
                         <img src="{{url('assets/painel/imgs/acl-branca.png')}}" alt="acl" class="logo">
                     </a>
                 </li>
+                @can('user')
                 <li class="col-md-2 text-center">
                     <a href="{{url('/painel/users') }}">
                         <img src="{{url('assets/painel/imgs/perfil-acl.png')}}" alt="usuarios" class="img-menu">
                         <h1>Usuários</h1>
                     </a>
                 </li>
+                @else
+                <li class="col-md-2 text-center">
+                    <img src="{{url('assets/painel/imgs/perfil-acl.png')}}" alt="usuarios" class="img-menu">
+                    <h1>Not Permission</h1>
+                </li>
+                @endcan
+                @can('view_post')
                 <li class="col-md-2 text-center">
                     <a href="{{url('/painel/posts') }}">
                         <img src="{{url('assets/painel/imgs/noticias-acl.png')}}" alt="posts" class="img-menu">
                         <h1>Posts</h1>
                     </a>
                 </li>
+                @else
+                <li class="col-md-2 text-center">
+                    <img src="{{url('assets/painel/imgs/noticias-acl.png')}}" alt="posts" class="img-menu">
+                    <h1>Not Permission</h1>
+                </li>
+                @endcan
+                @can('adm')
                 <li class="col-md-2 text-center">
                     <a href="{{url('/painel/roles') }}">
                         <img src="{{url('assets/painel/imgs/funcao-acl.png')}}" alt="roles" class="img-menu">
                         <h1>Roles</h1>
                     </a>
                 </li>
+                @else
+                <li class="col-md-2 text-center">
+                    <img src="{{url('assets/painel/imgs/funcao-acl.png')}}" alt="roles" class="img-menu">
+                    <h1>Not Permission</h1>
+                </li>
+                @endcan
+                
+                @can('adm')
                 <li class="col-md-2 text-center">
                     <a href="{{url('/painel/permissions') }}">
                         <img src="{{url('assets/painel/imgs/permissao-acl.png')}}" alt="permissions" class="img-menu">
                         <h1>Permissões</h1>
                     </a>
                 </li>
+                @else
                 <li class="col-md-2 text-center">
-                    <a href="/logout">
+                        <img src="{{url('assets/painel/imgs/permissao-acl.png')}}" alt="permissions" class="img-menu">
+                        <h1>Not Permission</h1>
+                </li>
+                @endcan
+                <li class="col-md-2 text-center">
+                    <a href="{{url('logout')}}">
                         <img src="{{url('assets/painel/imgs/sair-acl.png')}}" alt="Sair" class="img-menu">
                         <h1>Sair</h1>
                     </a>
