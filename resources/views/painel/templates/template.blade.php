@@ -25,13 +25,13 @@
         <div class="menu">
             <ul class="menu col-md-12">
                 <li class="col-md-2 text-center">
-                    <a href="/painel">
+                    <a href="{{url('painel')}}">
                         <img src="{{url('assets/painel/imgs/acl-branca.png')}}" alt="acl" class="logo">
                     </a>
                 </li>
                 @can('user')
                 <li class="col-md-2 text-center">
-                    <a href="{{url('/painel/users') }}">
+                    <a href="{{url('painel/users') }}">
                         <img src="{{url('assets/painel/imgs/perfil-acl.png')}}" alt="usuarios" class="img-menu">
                         <h1>Usuários</h1>
                     </a>
@@ -44,7 +44,7 @@
                 @endcan
                 @can('view_post')
                 <li class="col-md-2 text-center">
-                    <a href="{{url('/painel/posts') }}">
+                    <a href="{{url('painel/posts') }}">
                         <img src="{{url('assets/painel/imgs/noticias-acl.png')}}" alt="posts" class="img-menu">
                         <h1>Posts</h1>
                     </a>
@@ -57,7 +57,7 @@
                 @endcan
                 @can('adm')
                 <li class="col-md-2 text-center">
-                    <a href="{{url('/painel/roles') }}">
+                    <a href="{{url('painel/roles') }}">
                         <img src="{{url('assets/painel/imgs/funcao-acl.png')}}" alt="roles" class="img-menu">
                         <h1>Roles</h1>
                     </a>
@@ -71,7 +71,7 @@
                 
                 @can('adm')
                 <li class="col-md-2 text-center">
-                    <a href="{{url('/painel/permissions') }}">
+                    <a href="{{url('painel/permissions') }}">
                         <img src="{{url('assets/painel/imgs/permissao-acl.png')}}" alt="permissions" class="img-menu">
                         <h1>Permissões</h1>
                     </a>

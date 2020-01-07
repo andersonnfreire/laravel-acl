@@ -13,6 +13,12 @@ class PostController extends Controller
     public function __construct(Post $post)
     {
         $this->post = $post;
+        
+        if(Gate::denies('view_post')){
+            return redirect()->back();
+            //tabort(403,'Not Permissions Lists Post');
+        }
+        
     }
 
 
@@ -20,10 +26,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = $this->post->all();
-        if(Gate::denies('view_post')){
-            return redirect()->back();
-            //tabort(403,'Not Permissions Lists Post');
-        }
+        
         return view('painel.posts.index', compact('posts'));
     }
 }

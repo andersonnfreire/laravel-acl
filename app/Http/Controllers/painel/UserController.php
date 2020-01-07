@@ -10,14 +10,15 @@ class UserController extends Controller
     
     public function __construct(User $user) {
         $this->user = $user;
-    }
-    public function index() {
-        $users = $this->user->all();
-        
         if(Gate::denies('user')){
             return redirect()->back();
             //tabort(403,'Not Permissions Lists Post');
         }
+    }
+    public function index() {
+        $users = $this->user->all();
+        
+        
         
         return view('painel.users.index',compact('users'));
     }
