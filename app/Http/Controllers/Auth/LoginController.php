@@ -24,7 +24,7 @@ use AuthenticatesUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/painel';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -39,5 +39,7 @@ use AuthenticatesUsers;
         Auth::logout();
         return redirect('/login');
     }
-
+    public function login() {
+        return redirect('/login');
+    }
 }

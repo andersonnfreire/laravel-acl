@@ -22,11 +22,11 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('user/{id}/roles', 'painel\UserController@roles');
     });
     
+    
 });
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::get('/', 'portal\SiteController@index');
-
+Route::get('/', '\App\Http\Controllers\Auth\LoginController@login');
 
 
 
